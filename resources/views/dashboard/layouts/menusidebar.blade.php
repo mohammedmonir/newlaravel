@@ -36,7 +36,7 @@
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-files-o"></i>
-                    <span>Layout Options</span>
+                    <span>@lang('site.test')</span>
                     <span class="label label-primary pull-left">۴</span>
                 </a>
                 <ul class="treeview-menu">

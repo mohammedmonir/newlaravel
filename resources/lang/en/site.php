@@ -89,5 +89,7 @@ return [
 'shipping'         =>'shipping',
 'list'         =>'list',
 'search'         =>'search',
+'english'     =>' English'   , 
+'arabic'     =>' Arabic'   , 
 
 ];

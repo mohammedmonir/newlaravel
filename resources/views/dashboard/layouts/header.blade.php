@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html dir='{{ LaravelLocalization::getCurrentLocaleDirection() }}'>
   <head>
     <meta charset="UTF-8">
     <title>AdminLTE 2 | Dashboard</title>
