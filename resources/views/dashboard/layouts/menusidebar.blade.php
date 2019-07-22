@@ -27,24 +27,18 @@
 
 
             <li class="active treeview">
-                <a href="#">
+                <a href="{{url('dashboard/index')}}">
                   <i class="fa fa-dashboard"></i> <span>@lang('site.dashboard')</span> <i class="fa fa-angle-left pull-left"></i>
                 </a>
             </li>
 
 
             <li class="treeview">
-                <a href="#">
+                <a href="{{url('dashboard/users')}}">
                     <i class="fa fa-files-o"></i>
-                    <span>@lang('site.test')</span>
+                    <span>@lang('site.users')</span>
                     <span class="label label-primary pull-left">۴</span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                    <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                    <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                    <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-                </ul>
             </li>
            
         </section>

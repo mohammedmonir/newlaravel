@@ -3,19 +3,8 @@
 @include('dashboard.layouts.menusidebar')
 @include('dashboard.layouts.errors')
 
-
-
+     @yield('content')
  
   
-  <div class="content-wrapper">
-      <section class="content">
-        <!-- محتوى الصفحة -->
-          @yield('content')
-      </section>
-  </div>
-  
-
-  
-
-  @include('dashboard.layouts.footer')
+@include('dashboard.layouts.footer')
   
