@@ -14,15 +14,29 @@
         </section>
 
         <section class="content">
+
                  <div class="box box-info">
 
                         <div class="box-header with-border">
-                            <h1 class="box-title"> @lang('site.users')</h1>
+
+                            <h1 class="box-title" style='margin-bottom:1.5%'> @lang('site.users')</h1>
+                            <form action="">
+                                <div class='row'>
+                                    <div class='col-md-4'>
+                                        <input type="text" name="search" class='form-control' placeholder='@lang("site.search")'>
+                                    </div>
+                                    <div class='col-md-4'>
+                                        <button type='submit' class='btn btn-primary'><i class='fa fa-search'></i>@lang("site.search")</button>
+                                        <a href="{{url('dashboard/users/create')}}" class='btn btn-primary'><i class='fa fa-plus'></i>@lang('site.add')</a>
+                                    </div>
+                                </div>
+                            </form>
+
                         </div>
 
                         <div class="box-body">
                              @if($users->count() > 0)
-                                <table class="table table-bordered">
+                                <table class="table table-hover">
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>@lang('site.first_name')</th>

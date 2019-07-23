@@ -9,6 +9,8 @@ function(){
 
           Route::resource('users','UserController')->except(['show']);
           
+
+          
      });
 
 });

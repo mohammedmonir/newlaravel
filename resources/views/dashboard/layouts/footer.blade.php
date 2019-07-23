@@ -49,5 +49,6 @@
     <script src="{{url('/')}}/dashboard/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{url('/')}}/dashboard/dist/js/demo.js"></script>
+    
   </body>
 </html>

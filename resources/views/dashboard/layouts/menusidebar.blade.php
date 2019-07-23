@@ -26,7 +26,7 @@
             <li class="header">@lang('site.list') </li>
 
 
-            <li class="active treeview">
+            <li class="treeview">
                 <a href="{{url('dashboard/index')}}">
                   <i class="fa fa-dashboard"></i> <span>@lang('site.dashboard')</span> <i class="fa fa-angle-left pull-left"></i>
                 </a>
