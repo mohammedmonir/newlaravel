@@ -20,6 +20,8 @@ return [
 'added_successfully'     =>'  تم اضافة البيانات بنجاح'   , 
 'updated_successfully'     =>'  تم تعديل البيانات بنجاح'   , 
 'deleted_successfully'     =>'  تم حذف البيانات بنجاح'   , 
+'myname'     =>'المهندس محمد'   , 
+
 
 
 ];
