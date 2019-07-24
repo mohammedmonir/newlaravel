@@ -32,14 +32,11 @@
                 </a>
             </li>
 
-
-            <li class="treeview">
-                <a href="{{url('dashboard/users')}}">
-                    <i class="fa fa-files-o"></i>
-                    <span>@lang('site.users')</span>
-                    <span class="label label-primary pull-left">۴</span>
-                </a>
-            </li>
+            @if(auth()->user()->hasPermission('read-users'))
+              <li class="treeview">
+                  <a href="{{url('dashboard/users')}}"><span>@lang('site.users')</span><span class="label label-primary pull-left">۴</span> </a>
+              </li>
+            @endif
            
         </section>
         <!-- /.sidebar -->

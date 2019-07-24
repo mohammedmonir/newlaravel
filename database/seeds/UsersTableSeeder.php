@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
             'first_name'=>'super',
             'last_name'=>'admin',
             'email'=>'super_admin@app.com',
-            'password'=>bcrypt('123456'),
+            'password'=>bcrypt('123'),
 
 
 

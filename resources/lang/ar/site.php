@@ -21,6 +21,11 @@ return [
 'updated_successfully'     =>'  تم تعديل البيانات بنجاح'   , 
 'deleted_successfully'     =>'  تم حذف البيانات بنجاح'   , 
 'myname'     =>'المهندس محمد'   , 
+'permissions'     =>'الصلاحيات'   , 
+'read'     =>'عرض'   , 
+'update'     =>'تعديل'   , 
+'delete'     =>'حذف'   , 
+'create'     =>'اضافة'   , 
 
 
 
