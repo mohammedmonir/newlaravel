@@ -28,4 +28,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getFirstNameAttribute($value){
+        return ucfirst($value);
+    }
+
+    public function getLastNameAttribute($value){
+        return ucfirst($value);
+    }
+
 }

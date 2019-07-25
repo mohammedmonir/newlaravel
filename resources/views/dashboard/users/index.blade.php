@@ -27,7 +27,11 @@
                                     </div>
                                     <div class='col-md-4'>
                                         <button type='submit' class='btn btn-primary'><i class='fa fa-search'></i>@lang("site.search")</button>
-                                        <a href="{{url('dashboard/users/create')}}" class='btn btn-primary'><i class='fa fa-plus'></i>@lang('site.add')</a>
+                                        @if(auth()->user()->hasPermission('create-users'))
+                                            <a href="{{route('users.create')}}" class='btn btn-primary'><i class='fa fa-plus'></i>@lang('site.add')</a>
+                                        @else
+                                            <a href="#" class='btn btn-primary disabled'><i class='fa fa-plus'></i>@lang('site.add')</a>
+                                        @endif
                                     </div>
                                 </div>
                             </form>
@@ -51,15 +55,36 @@
                                             <td> {{$user->last_name}}</td>
                                             <td>{{$user->email}}</td>
                                             <td>
-                                                <a href="{{url('dashboard/users/edit',$user->id)}}" class='btn btn-info btn-sm' style='margin-left:20%'>@lang('site.edit')</a>
+                                                @if(auth()->user()->hasPermission('update-users'))
+
+                                                    <a href="{{route('users.edit',$user->id) }}" class='btn btn-info btn-sm' style='margin-left:20%'>@lang('site.edit')</a>
+                                               
+                                                
+                                                @else
+
+                                                  <button class='btn btn-danger disabled'>@lang('site.edit')</button>
+
+                                                @endif
+
+
+                                                @if(auth()->user()->hasPermission('delete-users'))
+
                                                 <form action="{{url('dashboard/users/destroy',$user->id)}}" method='post' style='display:inline-block'>
                                                     {{ csrf_field() }}
                                                     {{ method_field('delete') }}
                                                     <button type='submit' class='btn btn-danger btn-sm'>@lang('site.delete')</button>
                                                 </form>
+
+                                                @else
+
+                                                  <button class='btn btn-danger disabled'>@lang('site.delete')</button>
+
+                                               @endif
                                             </td>
                                         </tr>
                                     @endforeach
+
+                                    
                                 </table>
                              @else
                                 <h2>@lang('site.no_data_found')</h2>
@@ -67,8 +92,11 @@
                                
                         </div>
                 </div>
+              
         </section>
 
     </div>
+
+
 
 @endsection

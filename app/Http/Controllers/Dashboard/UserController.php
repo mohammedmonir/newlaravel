@@ -21,9 +21,9 @@ class UserController extends Controller
         return view('dashboard.users.create');
     }
 
+
     public function store(Request $request)
     {
-     
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
@@ -44,20 +44,35 @@ class UserController extends Controller
     }
 
      
-    public function edit($id)
+    public function edit(User $user)
     {
-        
+        return view('dashboard.users.edit',compact('user'));
     }
+   
 
     
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+           
+        ]);
+      
+
+        $request_data=$request->except(['permissions']);
+        $user->update($request_data);
+        $user->syncPermissions($request->permissions);
+
+        session()->flash('success', __('site.updated_successfully'));
+        return redirect(url('dashboard/users'));
+        
     }
 
  
     public function destroy($id)
     {
-        //
+        
     }
 }

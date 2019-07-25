@@ -26,6 +26,8 @@ return [
 'update'     =>'تعديل'   , 
 'delete'     =>'حذف'   , 
 'create'     =>'اضافة'   , 
+'categories'     =>'الاقسام'   , 
+'products'     =>'المنتجات'   , 
 
 
 
