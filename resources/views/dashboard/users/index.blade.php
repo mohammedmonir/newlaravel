@@ -20,7 +20,9 @@
                         <div class="box-header with-border">
 
                             <h1 class="box-title" style='margin-bottom:1.5%'> @lang('site.users')</h1>
-                            <form action="">
+
+                            <form action="{{ route('users.index')}}" method='get'>
+
                                 <div class='row'>
                                     <div class='col-md-4'>
                                         <input type="text" name="search" class='form-control' placeholder='@lang("site.search")'>
@@ -34,6 +36,7 @@
                                         @endif
                                     </div>
                                 </div>
+                                
                             </form>
 
                         </div>
@@ -57,27 +60,27 @@
                                             <td>
                                                 @if(auth()->user()->hasPermission('update-users'))
 
-                                                    <a href="{{route('users.edit',$user->id) }}" class='btn btn-info btn-sm' style='margin-left:20%'>@lang('site.edit')</a>
+                                                    <a href="{{route('users.edit',$user->id) }}" class='btn btn-info btn-sm' style='margin-left:20%'><i class='fa fa-edit'></i> @lang('site.edit')</a>
                                                
                                                 
                                                 @else
 
-                                                  <button class='btn btn-danger disabled'>@lang('site.edit')</button>
+                                                  <button class='btn btn-danger disabled'><i class='fa fa-edit'></i> @lang('site.edit')</button>
 
                                                 @endif
 
 
                                                 @if(auth()->user()->hasPermission('delete-users'))
 
-                                                <form action="{{url('dashboard/users/destroy',$user->id)}}" method='post' style='display:inline-block'>
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('delete') }}
-                                                    <button type='submit' class='btn btn-danger btn-sm'>@lang('site.delete')</button>
-                                                </form>
+                                                    <form action="{{url('dashboard/users/destroy',$user->id)}}" method='post' style='display:inline-block'>
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('delete') }}
+                                                        <button type='submit' class='btn btn-danger btn-sm'><i class='fa fa-trash'></i> @lang('site.delete')</button>
+                                                    </form>
 
                                                 @else
 
-                                                  <button class='btn btn-danger disabled'>@lang('site.delete')</button>
+                                                  <button class='btn btn-danger disabled'><i class='fa fa-trash'></i> @lang('site.delete')</button>
 
                                                @endif
                                             </td>

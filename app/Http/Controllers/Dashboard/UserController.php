@@ -8,10 +8,27 @@ use App\User;
 
 class UserController extends Controller
 {
-   
-    public function index()
+
+    public function __construct()
     {
-        $users = User::all();
+        //لما ينسخ الرابط ما يقدر يدخل الا اذا كانت متوفرة عندو الصلاحيات
+        $this->middleware(['permission:read-users'])->only('index');
+        $this->middleware(['permission:create-users'])->only('create');
+        $this->middleware(['permission:update-users'])->only('edit');
+        $this->middleware(['permission:delete-users'])->only('destroy');
+
+    }//end of constructor
+
+   
+    public function index(Request $request)
+    {
+        $users = User::whereRoleIs('admin')->when($request->search,function($query) use($request){
+
+                return $query->where('first_name','like','%'.$request->search.'%')
+                ->orWhere('last_name','like','%'.$request->search.'%');
+ 
+        })->get();
+        
         return view('dashboard.users.index',compact('users'));
     }
 
