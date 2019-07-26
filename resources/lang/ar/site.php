@@ -28,6 +28,9 @@ return [
 'create'     =>'اضافة'   , 
 'categories'     =>'الاقسام'   , 
 'products'     =>'المنتجات'   , 
+'confirm_delete'     =>'تاكيد الحذف'   , 
+'yes'     =>'نعم'   , 
+'no'     =>'لا'   , 
 
 
 

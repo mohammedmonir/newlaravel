@@ -188,9 +188,17 @@
                     <div class="pull-right">
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
+
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                
+
+                        <form action="{{ route('logout') }}" method="post">
+                          {{ csrf_field() }}
+                          <input type="submit" value='logout'>
+                        </form>
+
                     </div>
+
                   </li>
                 </ul>
               </li>

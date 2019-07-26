@@ -27,8 +27,8 @@ class UserController extends Controller
                 return $query->where('first_name','like','%'.$request->search.'%')
                 ->orWhere('last_name','like','%'.$request->search.'%');
  
-        })->get();
-        
+        })->latest()->paginate(2);
+
         return view('dashboard.users.index',compact('users'));
     }
 
@@ -88,8 +88,10 @@ class UserController extends Controller
     }
 
  
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        
+        $user->delete();
+        session()->flash('success', __('site.deleted_successfully'));
+        return redirect()->route('users.index');
     }
 }
