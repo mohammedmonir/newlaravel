@@ -31,6 +31,7 @@ return [
 'confirm_delete'     =>'تاكيد الحذف'   , 
 'yes'     =>'نعم'   , 
 'no'     =>'لا'   , 
+'image'     =>'صورة'   , 
 
 
 

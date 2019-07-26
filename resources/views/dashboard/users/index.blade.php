@@ -57,6 +57,7 @@
                                         <th>@lang('site.first_name')</th>
                                         <th>@lang('site.last_name')</th>
                                         <th>@lang('site.email')</th>
+                                        <th>@lang('site.image')</th>
                                         <th>@lang('site.action')</th>
                                     </tr>
                                     @foreach($users as $index=>$user)
@@ -65,6 +66,7 @@
                                             <td>{{$user->first_name}} </td>
                                             <td> {{$user->last_name}}</td>
                                             <td>{{$user->email}}</td>
+                                            <td><img src="{{$user->image_path}}" alt="" style='width:30%' class='img-thumbnail'></td>
                                             <td>
                                                 @if(auth()->user()->hasPermission('update-users'))
 

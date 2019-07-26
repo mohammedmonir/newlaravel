@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password',
+        'first_name','last_name', 'email', 'password','image',
     ];
 
     /**
@@ -29,6 +29,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $appends=['image_path'];
+
     public function getFirstNameAttribute($value){
         return ucfirst($value);
     }
@@ -36,5 +38,11 @@ class User extends Authenticatable
     public function getLastNameAttribute($value){
         return ucfirst($value);
     }
+
+    public function getImagePathAttribute(){
+        return asset('uploads/user_images/'.$this->image);
+    }
+
+
 
 }
