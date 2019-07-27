@@ -15,7 +15,7 @@ return [
 'edit'     =>'  تعديل'   , 
 'delete'     =>'  حذف'   , 
 'search'     =>'  بحث'   , 
-'password'     =>'  الباسورد'   , 
+'password'     =>'  كلمة السر'   , 
 'password_confirmation'     =>'  تاكيد كلمة السر'   , 
 'added_successfully'     =>'  تم اضافة البيانات بنجاح'   , 
 'updated_successfully'     =>'  تم تعديل البيانات بنجاح'   , 

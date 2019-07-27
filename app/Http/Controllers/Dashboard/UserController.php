@@ -49,6 +49,8 @@ class UserController extends Controller
             'last_name' => 'required',
             'email' => 'required|unique:users',
             'password' => 'required|confirmed',
+            'image' => 'image',
+            'permissions' => 'required|min:1',
         ]);
 
         $request_data=$request->except(['password','permissions','password_confirmation','image']);
@@ -79,19 +81,43 @@ class UserController extends Controller
         return view('dashboard.users.edit',compact('user'));
     }
    
-
+    
     
     public function update(Request $request, User $user)
     {
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required',
+            'email' => ['required',Rule::unique('users')->ignore($user->id),],//اذا فيه شخص مستخدم الايميل قبل هيك ولا لا
+            'image' => 'image',
+            'permissions' => 'required|min:1',
            
         ]);
       
 
-        $request_data=$request->except(['permissions']);
+        $request_data=$request->except(['permissions','image']);
+
+       
+        if ($request->image) {
+
+            if ($user->image != 'default.png') {
+
+                Storage::disk('public_uploads')->delete('/user_images/' . $user->image);
+
+            }//end of inner if
+
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+
+            $request_data['image'] = $request->image->hashName();
+            
+        }//
+
+
+
         $user->update($request_data);
         $user->syncPermissions($request->permissions);
 
