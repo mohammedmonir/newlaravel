@@ -65,7 +65,7 @@
                                             <td>
                                                 @if(auth()->user()->hasPermission('update-categories'))
 
-                                                    <a href="{{route('categories.edit',$category->id) }}" class='btn btn-info btn-sm' style='margin-left:20%'><i class='fa fa-edit'></i> @lang('site.edit')</a>
+                                                    <a href="{{route('categories.edit',$category->id) }}" class='btn btn-info btn-sm' style='margin-left:10%'><i class='fa fa-edit'></i> @lang('site.edit')</a>
                                                
                                                 
                                                 @else

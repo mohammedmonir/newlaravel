@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\category;
+use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
   
-    public function index()
+    public function index(Request $request)
     {
-        $categories= Category::paginate(5);
+
+        $categories = Category::when($request->search, function ($q) use ($request) {
+
+            return $q->where('name','like', '%' . $request->search . '%');
+
+        })->latest()->paginate(3);
+        
         return view('dashboard.categories.index',compact('categories'));
     }
 
@@ -24,30 +30,43 @@ class CategoryController extends Controller
     
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|unique:categories,name',
+        ]);
+
+        Category::create($request->all());
+
+        session()->flash('success', __('site.added_successfully'));
+        return redirect(url('dashboard/categories'));
+
     }
 
   
-    public function show(category $category)
+
+   
+    public function edit(Category $category)
     {
-        //
+        return view('dashboard.categories.edit',compact('category'));
     }
 
    
-    public function edit(category $category)
+    public function update(Request $request, Category $category)
     {
-        //
-    }
+        $request->validate([
+            'name'=>'required|unique:categories,name,'.$category->id,
+        ]);
 
-   
-    public function update(Request $request, category $category)
-    {
-        //
+        $category->update($request->all());
+
+        session()->flash('success', __('site.updated_successfully'));
+        return redirect(url('dashboard/categories'));
     }
 
   
-    public function destroy(category $category)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        session()->flash('success', __('site.deleted_successfully'));
+        return redirect()->route('categories.index');
     }
 }
