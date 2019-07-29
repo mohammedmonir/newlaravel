@@ -14,8 +14,9 @@
             <li><a href="#">@lang('site.edit')</a></li>
 
         </ol>
-
     </section>
+
+
 
     <section class="content">
         <div class="box-body">
@@ -28,10 +29,14 @@
                 {{ csrf_field() }}
 
 
+                @foreach(config('translatable.locales') as $locale)
+
                 <div class='form-group'>
-                    <label>@lang('site.name')</label>
-                    <input type="text" name="name" class='form-control' value='{{$category->name}}'>
+                    <label>@lang('site.'.$locale.'.name')</label>
+                    <input type="text" name="{{ $locale }}[name]" class='form-control' value='{{$category->translate($locale)->name}}'>
                 </div>
+
+                @endforeach
 
 
 
