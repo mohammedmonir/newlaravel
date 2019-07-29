@@ -31,7 +31,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name'=>'required|unique:categories,name',
+            'ar.name'=>'required|unique:category_translations,name',
         ]);
 
         Category::create($request->all());

@@ -23,10 +23,20 @@
                 <form action="{{ route('categories.store') }}" method="post">
                     {{ csrf_field() }}
                     {{ method_field('post') }}
-                    <div class='form-group'>
-                        <label>@lang('site.name')</label>
-                        <input type="text" name="name" class='form-control' value='{{old("name")}}'>
-                    </div>
+
+
+                    @foreach(config('translatable.locales') as $locale)
+
+                        <div class='form-group'>
+                            <label>@lang('site.'.$locale.'.name')</label>
+                            <input type="text" name="{{ $locale }}[name]" class='form-control' value='{{old($locale.".name")}}'>
+                        </div>
+                        
+                    @endforeach
+
+                    
+
+
                     
                 
 
