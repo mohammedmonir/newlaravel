@@ -10,6 +10,8 @@ class Product extends Model
 
 
     protected $guarded=[];
+    
+    protected $appends=['image_path'];
 
     public $translatedAttributes = ['name','description'];
  
@@ -19,5 +21,9 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
 
+    }
+
+    public function getImagePathAttribute(){
+        return asset('uploads/product_images/'.$this->image);
     }
 }

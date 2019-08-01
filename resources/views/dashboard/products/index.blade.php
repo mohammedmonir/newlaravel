@@ -62,20 +62,21 @@
                                         <th>@lang('site.stock')</th>
                                         <th>@lang('site.action')</th>
                                     </tr>
-                                    @foreach($products as $index=>$products)
+                                    @foreach($products as $index=>$product)
                                         <tr>
                                             <td>{{$index + 1}}</td>
-                                            <td>{{$products->name}}</td>
-                                            <td><img src="" alt=""></td>
-                                            <td>{{$products->purchase_price}}</td>
-                                            <td>{{$products->sale_price}}</td>
-                                            <td>{{$products->stock}}</td>
+                                            <td>{{$product->name}}</td>
+                                            <td>{!!$product->description!!}</td>
+                                            <td style="width:20%"><img src="{{$product->image_path}}" alt="" class='img-thumbnail' style='width:40%'></td>
+                                            <td>{{$product->purchase_price}}</td>
+                                            <td>{{$product->sale_price}}</td>
+                                            <td>{{$product->stock}}</td>
                                             
                                            
                                             <td>
                                                 @if(auth()->user()->hasPermission('update-products'))
 
-                                                    <a href="{{route('products.edit',$products->id) }}" class='btn btn-info btn-sm' style='margin-left:10%'><i class='fa fa-edit'></i> @lang('site.edit')</a>
+                                                    <a href="{{route('products.edit',$product->id) }}" class='btn btn-info btn-sm' style='margin-left:10%'><i class='fa fa-edit'></i> @lang('site.edit')</a>
                                                
                                                 
                                                 @else
@@ -87,7 +88,7 @@
 
                                                 @if(auth()->user()->hasPermission('delete-products'))
                                                 
-                                                    <form action="{{route('products.destroy',$products->id)}}" method='post' style='display:inline-block'>
+                                                    <form action="{{route('products.destroy',$product->id)}}" method='post' style='display:inline-block'>
                                                         {{ csrf_field() }}
                                                         {{ method_field('delete') }}
                                                         <button type='submit' class='btn btn-danger delete btn-sm'><i class='fa fa-trash'></i> @lang('site.delete')</button>

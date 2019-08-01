@@ -29,36 +29,22 @@
                 <div class="form-group">
 
                     <label>@lang('site.categories')</label>
-                    <select name="category_id" class='form-control' style='height:20%'>
-                    <option value="">@lang('site.all_categories')</option>
-                        @foreach ($categories as $category)
-                            
-                         <option value="{{$category->id}}">{{$category->name}}</option>
 
-                        @endforeach
+                    <select name="category_id" class='form-control' style='height:20%'>
+
+                         <option value="">@lang('site.all_categories')</option>
+                         
+                             @foreach ($categories as $category)
+                            
+                                <option value="{{$category->id}}" {{old('category_id')==$category->id?'selected':''}}>{{$category->name}}</option>
+
+                            @endforeach
 
                     </select>
 
                 </div>
 
-                <div class='form-group'>
-                        <label>@lang('site.image')</label>
-                        <input type="file" name="image" class='form-control image'>
-                </div>
-    
-                <div class='form-group'>
-                    <img src="{{asset('uploads/product_images/default.jpg')}}" style='width:10%' class='img-thumbnail image-preview' alt="">
-                </div>
 
-                <div class='form-group'>
-                        <label>@lang('site.purchase_price')</label>
-                        <input type="number" name="purchase_price" class='form-control'>
-                </div>
-
-                <div class='form-group'>
-                        <label>@lang('site.sale_price')</label>
-                        <input type="number" name="sale_price" class='form-control'>
-                </div>
 
                 @foreach(config('translatable.locales') as $locale)
 
@@ -73,6 +59,30 @@
                     </div>
 
                 @endforeach
+
+                <div class='form-group'>
+                        <label>@lang('site.image')</label>
+                        <input type="file" name="image" class='form-control image'>
+                </div>
+    
+                <div class='form-group'>
+                    <img src="{{asset('uploads/product_images/default.jpg')}}" style='width:10%' class='img-thumbnail image-preview' alt="">
+                </div>
+
+                <div class='form-group'>
+                        <label>@lang('site.purchase_price')</label>
+                        <input type="number" name="purchase_price" class='form-control' value="{{old('purchase_price')}}">
+                </div>
+
+                <div class='form-group'>
+                        <label>@lang('site.sale_price')</label>
+                        <input type="number" name="sale_price" class='form-control' value="{{old('sale_price')}}">
+                </div>
+
+                <div class='form-group'>
+                        <label>@lang('site.stock')</label>
+                <input type="number" name="stock" class='form-control' value="{{old('stock')}}">
+                </div>
 
 
                 <div class='form-group'>

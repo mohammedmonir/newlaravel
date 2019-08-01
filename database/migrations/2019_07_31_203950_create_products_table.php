@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned();
             $table->string('image')->default('default.jpg');
-            $table->double('purchase_price,8,2');
-            $table->double('sale_price,8,2');
+            $table->double('purchase_price',8,2);
+            $table->double('sale_price',8,2);
             $table->integer('stock');
             $table->timestamps();
 
