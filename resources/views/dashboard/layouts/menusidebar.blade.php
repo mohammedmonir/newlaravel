@@ -31,18 +31,26 @@
                   <i class="fa fa-dashboard"></i> <span>@lang('site.dashboard')</span> <i class="fa fa-angle-left pull-left"></i>
                 </a>
             </li>
-
+            @if(auth()->user()->hasPermission('read-categories'))
+              <li class="treeview">
+                  <a href="{{url('dashboard/categories')}}"><span>@lang('site.categories')</span><span class="label label-primary pull-left">۴</span> </a>
+              </li>
+            @endif
+            
+            @if(auth()->user()->hasPermission('read-products'))
+              <li class="treeview">
+                  <a href="{{url('dashboard/products')}}"><span>@lang('site.products')</span><span class="label label-primary pull-left">۴</span> </a>
+              </li>
+            @endif
+            
             @if(auth()->user()->hasPermission('read-users'))
               <li class="treeview">
                   <a href="{{url('dashboard/users')}}"><span>@lang('site.users')</span><span class="label label-primary pull-left">۴</span> </a>
               </li>
             @endif
 
-            @if(auth()->user()->hasPermission('read-categories'))
-              <li class="treeview">
-                  <a href="{{url('dashboard/categories')}}"><span>@lang('site.categories')</span><span class="label label-primary pull-left">۴</span> </a>
-              </li>
-            @endif
+            
+
            
         </section>
         <!-- /.sidebar -->

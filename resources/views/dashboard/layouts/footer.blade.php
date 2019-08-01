@@ -49,6 +49,7 @@
     <script src="{{url('/')}}/dashboard/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{url('/')}}/dashboard/dist/js/demo.js"></script>
+    <script src="{{url('/')}}/dashboard/plugins/ckeditor/ckeditor.js"></script>
 
 
     <script>//confirm deleted
@@ -91,6 +92,8 @@
             }
         
           });
+
+          CKEDITOR.config.language =  "{{ app()->getLocale() }}";
     
     </script>
     
