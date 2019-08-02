@@ -54,6 +54,10 @@ return [
 
     'products'     => 'المنتجات',
     'description' => 'الوصف باللغة العربية',
+    'profit_percent' => 'الربح',
+    'product_count' => 'عدد المنتجات',
+    'related_products' => 'المنتجات المرتبطة ',
+    'all_categories' => ' كل الاقسام ',
 
 ];
  

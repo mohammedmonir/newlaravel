@@ -55,42 +55,48 @@
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>@lang('site.name')</th>
+                                        <th>@lang('site.product_count')</th>
+                                        <th>@lang('site.related_products')</th>
                                         <th>@lang('site.action')</th>
                                     </tr>
-                                    @foreach($categories as $index=>$category)
-                                        <tr>
-                                            <td>{{$index + 1}}</td>
-                                            <td>{{$category->name}}</td>
-                                           
-                                            <td>
-                                                @if(auth()->user()->hasPermission('update-categories'))
 
-                                                    <a href="{{route('categories.edit',$category->id) }}" class='btn btn-info btn-sm' style='margin-left:10%'><i class='fa fa-edit'></i> @lang('site.edit')</a>
-                                               
-                                                
-                                                @else
+                                @foreach($categories as $index=>$category)
 
-                                                  <button class='btn btn-danger disabled'><i class='fa fa-edit'></i> @lang('site.edit')</button>
+                                    <tr>
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{$category->name}}</td>
+                                        <td>{{$category->products->count()}}</td>
+                                        <td><a href="{{route('products.index')}}" class='btn btn-info btn-sm'>@lang('site.related_products')</a></td>
+                                        
+                                        <td>
+                                            @if(auth()->user()->hasPermission('update-categories'))
 
-                                                @endif
+                                                <a href="{{route('categories.edit',$category->id) }}" class='btn btn-info btn-sm' style='margin-left:10%'><i class='fa fa-edit'></i> @lang('site.edit')</a>
+                                            
+                                            
+                                            @else
+
+                                                <button class='btn btn-danger disabled'><i class='fa fa-edit'></i> @lang('site.edit')</button>
+
+                                            @endif
 
 
-                                                @if(auth()->user()->hasPermission('delete-categories'))
-                                                
-                                                    <form action="{{route('categories.destroy',$category->id)}}" method='post' style='display:inline-block'>
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('delete') }}
-                                                        <button type='submit' class='btn btn-danger delete btn-sm'><i class='fa fa-trash'></i> @lang('site.delete')</button>
-                                                    </form>
+                                            @if(auth()->user()->hasPermission('delete-categories'))
+                                            
+                                                <form action="{{route('categories.destroy',$category->id)}}" method='post' style='display:inline-block'>
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('delete') }}
+                                                    <button type='submit' class='btn btn-danger delete btn-sm'><i class='fa fa-trash'></i> @lang('site.delete')</button>
+                                                </form>
 
-                                                @else
+                                            @else
 
-                                                  <button class='btn btn-danger disabled'><i class='fa fa-trash'></i> @lang('site.delete')</button>
+                                                <button class='btn btn-danger disabled'><i class='fa fa-trash'></i> @lang('site.delete')</button>
 
-                                               @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
 
                                     
                                 </table>

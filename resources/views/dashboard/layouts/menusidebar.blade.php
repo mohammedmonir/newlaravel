@@ -26,28 +26,35 @@
             <li class="header">@lang('site.list') </li>
 
 
-            <li class="treeview">
-                <a href="{{url('dashboard/index')}}">
-                  <i class="fa fa-dashboard"></i> <span>@lang('site.dashboard')</span> <i class="fa fa-angle-left pull-left"></i>
-                </a>
-            </li>
             @if(auth()->user()->hasPermission('read-categories'))
+
               <li class="treeview">
-                  <a href="{{url('dashboard/categories')}}"><span>@lang('site.categories')</span><span class="label label-primary pull-left">۴</span> </a>
+                  <a href="{{url('dashboard/categories')}}">
+                    <i class="fa fa-dashboard"></i> <span>@lang('site.categories')</span> <i class="fa fa-angle-left pull-left"></i>
+                  </a>
               </li>
-            @endif
-            
-            @if(auth()->user()->hasPermission('read-products'))
-              <li class="treeview">
-                  <a href="{{url('dashboard/products')}}"><span>@lang('site.products')</span><span class="label label-primary pull-left">۴</span> </a>
-              </li>
-            @endif
-            
-            @if(auth()->user()->hasPermission('read-users'))
-              <li class="treeview">
-                  <a href="{{url('dashboard/users')}}"><span>@lang('site.users')</span><span class="label label-primary pull-left">۴</span> </a>
-              </li>
-            @endif
+              
+              @endif
+              
+              @if(auth()->user()->hasPermission('read-products'))
+
+                <li class="treeview">
+                    <a href="{{url('dashboard/products')}}">
+                      <i class="fa fa-plug"></i> <span>@lang('site.products')</span> <i class="fa fa-angle-left pull-left"></i>
+                    </a>
+                </li>
+                
+              @endif
+                
+              @if(auth()->user()->hasPermission('read-users'))
+
+                  <li class="treeview">
+                      <a href="{{url('dashboard/users')}}">
+                        <i class="fa fa-adjust"></i> <span>@lang('site.users')</span> <i class="fa fa-angle-left pull-left"></i>
+                      </a>
+                  </li>
+             
+              @endif
 
             
 

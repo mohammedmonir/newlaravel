@@ -35,6 +35,17 @@
 
                                     <div class='col-md-4'>
 
+                                        <select name="category_id" class='form-control' id="">
+                                                <option>@lang('site.all_categories')</option>
+                                            @foreach ($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    
+                                    </div>
+
+                                    <div class='col-md-4'>
+
                                         <button type='submit' class='btn btn-primary'><i class='fa fa-search'></i>@lang("site.search")</button>
                                         @if(auth()->user()->hasPermission('create-products'))
                                             <a href="{{route('products.create')}}" class='btn btn-primary'><i class='fa fa-plus'></i>@lang('site.add')</a>
@@ -59,6 +70,7 @@
                                         <th>@lang('site.image')</th>
                                         <th>@lang('site.purchase_price')</th>
                                         <th>@lang('site.sale_price')</th>
+                                        <th>@lang('site.profit_percent')%</th>
                                         <th>@lang('site.stock')</th>
                                         <th>@lang('site.action')</th>
                                     </tr>
@@ -70,6 +82,7 @@
                                             <td style="width:20%"><img src="{{$product->image_path}}" alt="" class='img-thumbnail' style='width:40%'></td>
                                             <td>{{$product->purchase_price}}</td>
                                             <td>{{$product->sale_price}}</td>
+                                            <td>{{$product->profit_percent . '%'}}</td>
                                             <td>{{$product->stock}}</td>
                                             
                                            
