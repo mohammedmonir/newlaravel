@@ -58,6 +58,7 @@ return [
     'product_count' => 'عدد المنتجات',
     'related_products' => 'المنتجات المرتبطة ',
     'all_categories' => ' كل الاقسام ',
-
+    'category'     => 'القسم',
+    
 ];
  

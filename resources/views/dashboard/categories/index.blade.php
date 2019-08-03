@@ -66,7 +66,7 @@
                                         <td>{{$index + 1}}</td>
                                         <td>{{$category->name}}</td>
                                         <td>{{$category->products->count()}}</td>
-                                        <td><a href="{{route('products.index')}}" class='btn btn-info btn-sm'>@lang('site.related_products')</a></td>
+                                        <td><a href="{{route('products.index',['category_id'=>$category->id])}}" class='btn btn-info btn-sm'>@lang('site.related_products')</a></td>
                                         
                                         <td>
                                             @if(auth()->user()->hasPermission('update-categories'))

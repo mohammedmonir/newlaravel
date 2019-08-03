@@ -83,19 +83,71 @@ class ProductController extends Controller
    
 
   
-    public function edit(product $product)
+    public function edit(Product $product)
     {
-        
+        $categories = Category::all();
+        return view('dashboard.products.edit', compact('categories', 'product'));  
     }
 
  
-    public function update(Request $request, product $product)
+    public function update(Request $request, Product $product)
     {
+        $rules = [
+            'category_id' => 'required'
+        ];
+
+        foreach (config('translatable.locales') as $locale) {
+
+            $rules += [$locale . '.name' => ['required', Rule::unique('product_translations', 'name')->ignore($product->id, 'product_id')]];
+            $rules += [$locale . '.description' => 'required'];
+
+        }//end of  for each
+
+        $rules += [
+            'purchase_price' => 'required',
+            'sale_price' => 'required',
+            'stock' => 'required',
+        ];
+
+        $request->validate($rules);
+
+        $request_data = $request->all();
+
+        if ($request->image) {
+
+            if ($product->image != 'default.jpg') {
+
+                Storage::disk('public_uploads')->delete('/product_images/' . $product->image);
+                    
+            }//end of if
+
+            Image::make($request->image)
+                ->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })
+                ->save(public_path('uploads/product_images/' . $request->image->hashName()));
+
+            $request_data['image'] = $request->image->hashName();
+
+        }//end of if
+        
+        $product->update($request_data);
+        session()->flash('success', __('site.updated_successfully'));
+        return redirect()->route('products.index');
+
         
     }
 
-    public function destroy(product $product)
+    public function destroy(Product $product)
     {
-        
+        if ($product->image != 'default.jpg') {
+
+            Storage::disk('public_uploads')->delete('/product_images/' . $product->image);
+
+        }//end of if
+
+        $product->delete();
+        session()->flash('success', __('site.deleted_successfully'));
+        return redirect()->route('products.index');
     }
 }
