@@ -9,6 +9,7 @@ return array(
     'AddFreshSeeds' => $vendorDir . '/dimsav/laravel-translatable/tests/seeds/AddFreshSeeds.php',
     'App\\Category' => $baseDir . '/app/Category.php',
     'App\\CategoryTranslation' => $baseDir . '/app/CategoryTranslation.php',
+    'App\\Client' => $baseDir . '/app/Client.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

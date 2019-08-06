@@ -393,6 +393,7 @@ class ComposerStaticInit8adea99f1c2f147ebcb125023d312bb7
         'AddFreshSeeds' => __DIR__ . '/..' . '/dimsav/laravel-translatable/tests/seeds/AddFreshSeeds.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\CategoryTranslation' => __DIR__ . '/../..' . '/app/CategoryTranslation.php',
+        'App\\Client' => __DIR__ . '/../..' . '/app/Client.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

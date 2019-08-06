@@ -35,6 +35,8 @@
               </li>
               
               @endif
+
+              
               
               @if(auth()->user()->hasPermission('read-products'))
 
@@ -45,6 +47,19 @@
                 </li>
                 
               @endif
+
+                
+              @if(auth()->user()->hasPermission('read-clients'))
+
+                <li class="treeview">
+                    <a href="{{url('dashboard/clients')}}">
+                      <i class="fa fa-plug"></i> <span>@lang('site.clients')</span> <i class="fa fa-angle-left pull-left"></i>
+                    </a>
+                </li>
+                
+              @endif
+
+
                 
               @if(auth()->user()->hasPermission('read-users'))
 
