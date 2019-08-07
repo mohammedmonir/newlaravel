@@ -19,7 +19,9 @@
     <section class="content">
 
         <div class="box-body">
+            
             @include('dashboard.layouts.errors')
+
             <form action="{{ route('clients.store') }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('post') }}
@@ -31,17 +33,12 @@
                </div>
 
                
-               <div class="form-group">
-                    <label>@lang('site.phone')</label>
-                    <input type="text" name= 'phone[]' class='form-control' value="{{old('name')}}">
-               </div>
-
-
-               <div class="form-group">
-                    <label>@lang('site.phone')</label>
-                    <input type="text" name= 'phone[]' class='form-control' value="{{old('name')}}">
-               </div>
-
+               @for ($i = 0; $i < 2; $i++)
+                            <div class="form-group">
+                                <label>@lang('site.phone')</label>
+                                <input type="text" name="phone[]" class="form-control">
+                            </div>
+                @endfor
 
                <div class="form-group">
                     <label>@lang('site.address')</label>
