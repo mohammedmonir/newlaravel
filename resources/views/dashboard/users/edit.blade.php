@@ -60,7 +60,7 @@
                         <div class="nav-tabs-custom">
                         
                             @php
-                                $models=['users','categories','products'];
+                                $models=['users','categories','products','clients','orders'];
                             @endphp
 
                             <ul class="nav nav-tabs">
