@@ -50,6 +50,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{url('/')}}/dashboard/dist/js/demo.js"></script>
     <script src="{{url('/')}}/dashboard/plugins/ckeditor/ckeditor.js"></script>
+    <script src="{{url('/')}}/dashboard/dist/js/order.js"></script>
 
 
     <script>//confirm deleted
