@@ -71,17 +71,17 @@
 
                 <div class='form-group'>
                         <label>@lang('site.purchase_price')</label>
-                        <input type="number" name="purchase_price" class='form-control' value="{{$product->purchase_price}}">
+                        <input type="number" name="purchase_price" step='0.01' class='form-control' value="{{$product->purchase_price}}">
                 </div>
 
                 <div class='form-group'>
                         <label>@lang('site.sale_price')</label>
-                        <input type="number" name="sale_price" class='form-control' value="{{$product->sale_price}}">
+                        <input type="number" name="sale_price" step='0.01' class='form-control' value="{{$product->sale_price}}">
                 </div>
 
                 <div class='form-group'>
                         <label>@lang('site.stock')</label>
-                <input type="number" name="stock" class='form-control' value="{{$product->stock}}">
+                        <input type="number" name="stock" step='0.01' class='form-control' value="{{$product->stock}}">
                 </div>
 
 

@@ -6,7 +6,7 @@ $(document).ready(function () {
         e.preventDefault();
         var name = $(this).data('name');
         var id = $(this).data('id');
-        var price = $(this).data('price');
+        var price = $.number($(this).data('price'), 2);
 
         $(this).removeClass('btn-success').addClass('btn-default disabled');
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
 
             var quantity = $(this).val(); //2
             var unitPrice = parseFloat($(this).data('price')); //150
-            $(this).closest('tr').find('.product-price').html(quantity * unitPrice, 2);
+            $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
             calculateTotal();
            
     
@@ -66,15 +66,13 @@ $(document).ready(function () {
 function calculateTotal() {
 
     var price = 0;
-
     $('.order-list .product-price').each(function(index) {
         
-        price += parseFloat($(this).html());
+        price += parseFloat($(this).html().replace(/,/g, ''));
 
     });//end of product price
 
-    $('.total-price').html(price);
-
+    $('.total-price').html($.number(price, 2));
 
     
 
