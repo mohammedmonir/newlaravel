@@ -125,7 +125,8 @@
                                 </thead>
 
                                 <tbody class="order-list">
-
+                                    
+                                        {{-- in append in order.js --}}
 
                                 </tbody>
 
