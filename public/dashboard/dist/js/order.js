@@ -1,29 +1,29 @@
 $(document).ready(function () {
     
    
-    $('.add-product-btn').on('click', function (e) {
+        $('.add-product-btn').on('click', function (e) {
 
-        e.preventDefault();
-        var name = $(this).data('name');
-        var id = $(this).data('id');
-        var price = $.number($(this).data('price'), 2);
+            e.preventDefault();
+            var name = $(this).data('name');
+            var id = $(this).data('id');
+            var price = $.number($(this).data('price'), 2);
 
-        $(this).removeClass('btn-success').addClass('btn-default disabled');
+            $(this).removeClass('btn-success').addClass('btn-default disabled');
 
-        var html =
-            `<tr>
-                <td>${name}</td>
-                <input type='hidden' name='products[]' value='${id}'>
-                <td><input type="number" name="quantity[]" data-price="${price}" class="form-control input-sm product-quantity" min="1" value="1"></td>
-                <td class="product-price">${price}</td>               
-                <td><button class="btn btn-danger btn-sm remove-product-btn" data-id="${id}"><span class="fa fa-trash"></span></button></td>
-            </tr>`;
+            var html =
+                `<tr>
+                    <td>${name}</td>
+                    <input type='hidden' name='products[]' value='${id}'>
+                    <td><input type="number" name="quantity[]" data-price="${price}" class="form-control input-sm product-quantity" min="1" value="1"></td>
+                    <td class="product-price">${price}</td>               
+                    <td><button class="btn btn-danger btn-sm remove-product-btn" data-id="${id}"><span class="fa fa-trash"></span></button></td>
+                </tr>`;
 
-        $('.order-list').append(html);//عرض حقل ال html في كلاس
+            $('.order-list').append(html);//عرض حقل ال html في كلاس
 
-        calculateTotal();
+            calculateTotal();
 
-    });
+        });
 
 
 
@@ -48,21 +48,19 @@ $(document).ready(function () {
 
         $('body').on('keyup change', '.product-quantity', function() {
 
-            var quantity = $(this).val(); //2
-            var unitPrice = parseFloat($(this).data('price')); //150
+            var quantity = Number($(this).val()); //2
+            var unitPrice = parseFloat($(this).data('price').replace(/,/g, '')); //150
             $(this).closest('tr').find('.product-price').html($.number(quantity * unitPrice, 2));
             calculateTotal();
            
     
         });
+ 
+
+}); //end of document jquery
 
 
-        
-  
 
-    
-
-});
 
 function calculateTotal() {
 
