@@ -142,7 +142,7 @@
 
                 </div><!-- end of box -->
 
-                @if ($client->orders->count() > 0)
+                {{-- @if ($client->orders->count() > 0)
 
                     <div class="box box-primary">
 
@@ -194,7 +194,7 @@
 
                     </div><!-- end of box -->
 
-                @endif
+                @endif --}}
 
             </div><!-- end of col -->
 
