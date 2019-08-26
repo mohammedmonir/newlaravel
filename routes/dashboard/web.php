@@ -15,6 +15,7 @@ function(){
 
 
           Route::resource('orders','OrderController')->except(['show']);
+          Route::get('/orders/{order}/products', 'OrderController@products')->name('orders.products');
 
           Route::resource('clients','ClientController')->except(['show']);
           Route::resource('clients.orders','Client\OrderController')->except(['show']);
