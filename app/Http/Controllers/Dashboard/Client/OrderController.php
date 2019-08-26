@@ -28,32 +28,35 @@ class OrderController extends Controller
     public function store(Request $request, Client $client)
     {
 
+       
         $request->validate([
-            'product_ids'=>'required|array',
-            'quantites'=>'required|array',
+            'products'=>'required|array',
+           
         ]);
 
         $order = $client->orders()->create([]);
+        $order->products()->attach($request->products);
 
         $total_price = 0 ;
 
-        foreach($request->product_ids as $index=>$product_id){
+        foreach($request->products as $id=>$quantity){
+           
 
-            $product=Product::findOrFail($product_id);
-            $total_price +=$product->sale_price; 
-
-            $order->products()->attach($product_id,['quantity'=>$request->quantites[$index]]);
+            $product=Product::findOrFail($id);
+            $total_price +=$product->sale_price * $quantity['quantity']; 
 
             $product->update([
-                'stock'=>$product->stock - $request->quantites[$index],
+                'stock'=>$product->stock - $quantity['quantity'],
             ]);
             
-
         }
 
         $order->update([
             'total_price'=>$total_price,
         ]);
+
+        session()->flash('success', __('site.added_successfully'));
+        return redirect()->route('orders.index');
         
     }
 

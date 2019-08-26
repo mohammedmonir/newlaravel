@@ -71,6 +71,17 @@
              
               @endif
 
+
+              @if(auth()->user()->hasPermission('read-orders'))
+
+                  <li class="treeview">
+                      <a href="{{url('dashboard/orders')}}">
+                        <i class="fa fa-adjust"></i> <span>@lang('site.orders')</span> <i class="fa fa-angle-left pull-left"></i>
+                      </a>
+                  </li>
+             
+              @endif
+
             
 
            
