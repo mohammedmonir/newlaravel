@@ -68,6 +68,7 @@ return [
     'sale_price' => 'سعر البيع',
     'stock' => 'المخزن',
     'profit_percent' => 'المكسب',
+    'product_count' => 'عدد المنتجات',
 
     'ar' => [
         'name' => 'الاسم بالغه العربيه',

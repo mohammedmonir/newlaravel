@@ -137,12 +137,14 @@
                         <div class="box-body">
 
                             <div style="display: none; flex-direction: column; align-items: center;" id="loading">
-                                <div class="loader"></div>
+                                <div class="loader">
+                                    <img src="{{url('dashboard/loading.gif')}}" alt="" style='width:100px'>
+                                </div>
                                 <p style="margin-top: 10px">@lang('site.loading')</p>
                             </div>
 
                             <div id="order-product-list">
-
+                               
                             </div><!-- end of order product list -->
 
                         </div><!-- end of box body -->

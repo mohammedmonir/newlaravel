@@ -14,8 +14,9 @@
                 
             <tr>
                 <td>{{ $product->name }}</td>
-                <td>{{ $product->pivot->quantity }}</td>
+                <td>{{ $product->pivot->quantity }}</td> 
                 <td>{{ number_format($product->pivot->quantity * $product->sale_price, 2) }}</td>
+                {{-- موجودة في المودل ال pivot  --}}
             </tr>
         @endforeach
         </tbody>
