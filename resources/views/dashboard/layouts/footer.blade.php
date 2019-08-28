@@ -99,6 +99,7 @@
           CKEDITOR.config.language =  "{{ app()->getLocale() }}";
     
     </script>
+    @stack('scripts')
     
   </body>
 </html>

@@ -11,7 +11,7 @@
             </h1>
 
             <ol class="breadcrumb">
-                {{-- <li><a href="{{ route('welcome') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li> --}}
+                <li><a href="{{ route('welcome') }}"><i class="fa fa-dashboard"></i> @lang('site.dashboard')</a></li>
                 <li class="active">@lang('site.orders')</li>
             </ol>
         </section>

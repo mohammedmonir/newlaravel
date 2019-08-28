@@ -19,6 +19,15 @@ class dashboardController extends Controller
         $users_count = User::whereRoleIs('admin')->count();
 
 
-        return view('dashboard.index', compact('categories_count', 'products_count', 'clients_count', 'users_count'));
+        
+
+        $sales_data = Order::select(
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('MONTH(created_at) as month'),
+            DB::raw('SUM(total_price) as sum')
+        )->groupBy('month')->get();
+
+        return view('dashboard.index', compact('categories_count', 'products_count', 'clients_count', 'users_count', 'sales_data'));
+    
     }
 }

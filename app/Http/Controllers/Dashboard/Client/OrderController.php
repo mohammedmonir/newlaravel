@@ -36,27 +36,7 @@ class OrderController extends Controller
 
         $this->attach_order($request, $client);
 
-        $order = $client->orders()->create([]);
-        $order->products()->attach($request->products);
-
-        $total_price = 0 ;
-
-        foreach($request->products as $id=>$quantity){
-           
-
-            $product=Product::findOrFail($id);
-            $total_price +=$product->sale_price * $quantity['quantity']; 
-
-            $product->update([
-                'stock'=>$product->stock - $quantity['quantity'],
-            ]);
-            
-        }
-
-        $order->update([
-            'total_price'=>$total_price,
-        ]);
-
+       
         session()->flash('success', __('site.added_successfully'));
         return redirect()->route('orders.index');
         
