@@ -78,6 +78,13 @@ $(document).ready(function () {
             })
     
         });//end of order products click
+
+
+        $(document).on('click', '.print-btn', function() {
+
+            $('#print-area').printThis();
+    
+        });//end of click function
  
 
 }); //end of document jquery

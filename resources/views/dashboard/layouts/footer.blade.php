@@ -32,6 +32,7 @@
     <script src="{{url('/')}}/dashboard/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <!-- jQuery Knob Chart -->
     <script src="{{url('/')}}/dashboard/plugins/knob/jquery.knob.js"></script>
+    <script src="{{url('/')}}/dashboard/plugins/printthis.js"></script>
     <!-- daterangepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
     <script src="{{url('/')}}/dashboard/plugins/daterangepicker/daterangepicker.js"></script>

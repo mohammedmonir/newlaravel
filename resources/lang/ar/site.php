@@ -67,6 +67,7 @@ return [
     'price' => 'السعر',
     'sale_price' => 'سعر البيع',
     'stock' => 'المخزن',
+    'myname' => 'caroii',
     'profit_percent' => 'المكسب',
     'product_count' => 'عدد المنتجات',
 
