@@ -15,6 +15,7 @@ return [
 'edit'     =>'  edit'   , 
 'delete'     =>'  delete'   , 
 'search'     =>'  search'   , 
+'categories'     =>'  categories'   , 
 
 
 ];
